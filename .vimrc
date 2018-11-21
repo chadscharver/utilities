@@ -1,94 +1,70 @@
-" General configurations
-" -------------------------------------------------------------------------------------------------
 set nocompatible
-set number
-set encoding=utf-8
-set clipboard=unnamed	" use system clipboard to cut/copy/paste from other applications
-set backspace=indent,eol,start
-set autowrite
+set number              " show line numbers
 
-" Mouse settings enables mouse in normal and to resize window splits
+"Enables the Airline plugin
+let g:airline#extensions#tabline#enabled = 1
+
+" Mouse and ttymouse settings allows using a mouse and to click-drag the window splits
 set mouse=n
 set ttymouse=xterm2
 
+" ColorScheme
+set t_Co=256
+colorscheme codedark
 
-" Tab spacing
-" -------------------------------------------------------------------------------------------------
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" TAB SPACING
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+" UI CONFIG
+set showcmd             " show command in bottom bar
+set showmatch           " highlight matching [{()}]
+
+" SEARCHING
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" FOLDING
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes folds
+nnoremap <space> za
+set foldmethod=indent   " fold based on indent level
 
 
-" Enable folding
-" -------------------------------------------------------------------------------------------------
-set foldmethod=indent
-set foldlevel=99
-noremap <space> za	" enables folding with the spacebar
-
-
-" Initial window settings
-" -------------------------------------------------------------------------------------------------
-let g:netrw_banner = 0
+" NetrwTreeListing - File Browser Settings
+" note: do not enable auto-open using augroup because it causes extra screen for vimdiff
+let g:netrw_banner = 0          " disables the top banner
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 20
-let g:netrw_sort_sequence = '[\/]$,*'
-"augroup ProjectDrawer
-" autocmd!
-" autocmd VimEnter * :Vexplore
-"augroup END
+let g:netrw_winsize = 25        " sets initial window size
 
 
-" Key Remapping
-" -------------------------------------------------------------------------------------------------
-nnoremap <C-H> <C-W>h<C-W>_	" Ctrl-h  will move cursor left one window
-nnoremap <C-J> <C-W>j<C-W>_	" Ctrl-j  will move cursor down one window
-nnoremap <C-K> <C-W>k<C-W>_	" Ctrl-k  will move cursor up one window
-nnoremap <C-L> <C-W>l<C-W>_	" Ctrl-l  will move cursor right one window
-nnoremap <C-R> <C-W>r<C-W>_	" Ctrl-r  will move cursor swaps windows
-nnoremap <space> za		" Enable folding with the spacebar
-nnoremap <C-Up> <Up>"add"ap<Up>
-nnoremap <C-Down> "add"ap
+" PLUGINS
+call plug#begin('~/.vim/plugged')       "Specifies a directory for plugins
+Plug 'vim-airline/vim-airline'
+Plug 'tomasiser/vim-code-dark'
+call plug#end()                         " Initialize plugin system
 
-noremap <silent> <Leader>cc :TComment<CR>       " Key remap to customize the :associated key for tcomment - Leader C is the prefix for code related mappings
+" Mapping
+map <C-H> <C-W>h<C-W>_
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
 
-" shortcuts for xml formatting
+
+" XML Formating
 map <C-F> gg=G                  " this maps vim's format command to Ctrl-F
 map <C-E> :%s/> *</>\r</g<CR>   " this maps a substitute command to expand an xml line
+let mapleader = "x"             " this auto indents on return
 
-" shortcuts for json formatting
-map <C-J> :%!python -m json.tool<CR>
-
-
-" Stupid shift key fixes
+" Shift key fixes
 cmap W w
 cmap WQ wq
 cmap wQ wq
 cmap Q q
 cmap Tabe tabe
-
-
-" Plugin Configuration
-" -----------------------------------------------------------------------------
-call plug#begin('~/.vim/plugged')	" specify directory for plugins
-
-" List plugins here
-Plug 'tomtom/tcomment_vim'		" tcomment for unified fast commenting
-Plug 'itchyny/lightline.vim'		" using Lightline for the status line
-Plug 'aradunovic/perun.vim'		" perun colorscheme
-Plug 'elixir-editors/vim-elixir'	" Elixir language editing
-Plug 'tpope/vim-rails'			" Ruby Rails framework editing
-
-
-call plug#end()				" End Plug Configuration
-" Initialize plugins in default VIM window to install or update
-" by opening Vim from the terminal and simply typing :PlugInstall
-
-
-noremap <silent> <Leader>cc :TComment<CR>	" Key remap to customize the :associated key for tcomment - Leader C is the prefix for code related mappings
-
-" Keys Configuration
-" -----------------------------------------------------------------------------
-let mapleader = ','
-
-
 
