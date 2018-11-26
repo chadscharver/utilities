@@ -6,6 +6,7 @@ syntax enable
 " Indentation
 set autoindent
 set smartindent
+set backspace=indent,eol,start
 
 "Enables the Airline plugin
 let g:airline#extensions#tabline#enabled = 1
