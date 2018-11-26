@@ -13,7 +13,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Mouse and ttymouse settings allows using a mouse and to click-drag the window splits
 set mouse=a
 set ttymouse=xterm2
-set mousemodel=popup	" allows for pop-up menu
 
 " ColorScheme
 set t_Co=256
