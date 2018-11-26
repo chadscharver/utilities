@@ -1,6 +1,7 @@
 set nocompatible
 set number              " show line numbers
 set noswapfile
+set nowrap
 syntax enable
 
 " Indentation
@@ -22,7 +23,7 @@ colorscheme codedark
 " TAB SPACING
 set tabstop=4 softtabstop=0 shiftwidth=4 smarttab
 
-" Displa & Format
+" Display & Format
 set showcmd             " show command in bottom bar
 set showmatch           " To identify open and close brace positions when you traverse through the file
 set wrapmargin=2		" To wrap text based on a number of columns from the right side
