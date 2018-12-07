@@ -235,8 +235,7 @@ You can then use `git apply <patch file>` to apply patches.
 
 
 #### Git Merging Scenario
->
-tig screen-shot on master...
+>tig screen-shot on master...
 2018-11-07 16:25 username M─┐ [master] Merge branch 'octocrow'                      │commit 4945b8ad2bb763dc869e4d574c2e7188ae81afa1
 2018-11-07 16:23 username │ o [octocrow] crows like to kaa                          │Merge: 71041d0 e95e1c4
 2018-11-07 16:20 username M─│─┐ Merge branch 'octoall'                              │Author:     username <username@email.com>
