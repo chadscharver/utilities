@@ -7,12 +7,19 @@
 
 let mapleader = " "
 
-" PLUGINS 
+
+" PLUGINS
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tomasiser/vim-code-dark'
+Plug 'elixir-editors/vim-elixir'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
+
+" Automatically update plugins when opening vimrc
+autocmd VimEnter * PlugUpdate --sync | source $MYVIMRC | sleep 2 | :q | :normal gg
 
 " Enables the Airline plugin
 let g:airline#extensions#tabline#enabled = 1
@@ -29,16 +36,22 @@ filetype plugin on
 syntax enable
 
 
+" COLOR SCHEME
+set t_Co=256
+colorscheme codedark
+
+
 " AUTOCOMPLETION
 set wildmode=longest,list,full
 
 
 " WINDOW SPLITS
-set splitbelow splitright	" sets where to open splits
-map <C-h> <C-w>h			" navigational mapping for h
-map <C-j> <C-w>j			" navigational mapping for j
-map <C-k> <C-w>k			" navigational mapping for k
-map <C-l> <C-w>l			" navigational mapping for l
+set splitbelow splitright	" sets where to open splits	
+"split navigations
+	nnoremap <C-J> <C-W><C-J>
+	nnoremap <C-K> <C-W><C-K>
+	nnoremap <C-L> <C-W><C-L>
+	nnoremap <C-H> <C-W><C-H>
 
 
 " INDENTATION
@@ -51,13 +64,13 @@ set mouse=a				" a -> all modes
 set ttymouse=xterm2		" terminal type
 
 
-" COLOR SCHEME
-set t_Co=256
-colorscheme codedark
+" TABS
+set tabstop=4 softtabstop=0 shiftwidth=4 smarttab	" spacing
+let g:tablineclosebutton=1							" tab close button 'X'
 
 
-" TAB SPACING
-set tabstop=4 softtabstop=0 shiftwidth=4 smarttab
+" BUFFERS are not tabs! :-)
+map <Leader>t :tabnew<Esc>
 
 
 " DISPLAY & FORMAT
@@ -74,12 +87,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 
 " FOLDING
-set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
-" space open/closes folds
-nnoremap <space> za
-set foldmethod=indent   " fold based on indent level
+set foldmethod=indent
+set foldlevel=99
+nnoremap <Leader>za		" space open/closes folds
 
 
 " SPELL CHECKER
@@ -109,7 +119,6 @@ let g:netrw_winsize = 10        " sets initial window size
 " XML FORMATING
 map <C-F> gg=G                  " this maps vim's format command to Ctrl-F
 map <C-E> :%s/> *</>\r</g<CR>   " this maps a substitute command to expand an xml line
-"let mapleader = "x"             " this auto indents on return
 
 
 " SHIFT-KEY FIXES
