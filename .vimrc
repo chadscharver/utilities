@@ -95,16 +95,29 @@ nnoremap <Leader>za		" space open/closes folds
 " SPELL CHECKER
 set spell spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
-highlight SpellBad cterm=underline
 highlight CursorLine cterm=bold
 " Spell Checker Commands
 " 	]s	jump to next misspelled word
 " 	[s	jump to last misspelled word
 " 	z=	provides suggestions
 " 	zg	adds the word to the misspell file
+"
 " 	zug	removes a word from the misspell file
 " 	zw	marks a misspelled word
 " 	zuw	will unmark a misspelled word
+function! ToggleSpell()
+	if !exists("g:showingSpell")
+		let g:showingSpell=0
+	endif
+	if g:showingSpell==0
+		exec "highlight SpellBad cterm=underline"
+		let g:showingSpell=1
+	else
+		exec "highlight clear SpellBad"
+		let g:showingSpell=0
+	endif
+endfunction
+	:map <silent> <Leader>o :call ToggleSpell()<CR>
 
 
 " NetrwTreeListing - File Browser Settings
@@ -113,7 +126,7 @@ let g:netrw_banner = 0          " disables the top banner
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 10        " sets initial window size
+let g:netrw_winsize = 15        " sets initial window size
 
 
 " XML FORMATING
