@@ -11,6 +11,8 @@ alias la='ls -la'
 #PS1="\[\e[01;31m\]┌─[\[\e[01;35m\u\e[01;31m\]]──[\[\e[00;37m\]${HOSTNAME%%.*}\[\e[01;32m\]]:\w$\[\e[01;31m\]\n\[\e[01;31m\]└──\[\e[01;36m\]>>\[\e[0m\]"
 
 parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-export PS1="\n\[\e[1;34m\]\u@\h \[\e[1;33m\]\w\[\e[1;32m\]\$(parse_git_branch)\[\e[00m\]\n$"
+export PS1="\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[36m\]\$(parse_git_branch)\[\e[m\]\n$ "
+
+
