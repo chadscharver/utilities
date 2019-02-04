@@ -8,21 +8,38 @@
 let mapleader = " "
 
 
+" Install Vim-Plug if it is not already installed
+function! CheckVimPlug()
+	if empty(glob('~/.vim/autoload/plug.vim'))
+		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	endif
+endfunction
+call CheckVimPlug()
+
+
 " PLUGINS
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tomasiser/vim-code-dark'
 Plug 'elixir-editors/vim-elixir'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
+
 
 " Automatically update plugins when opening vimrc
 autocmd VimEnter * PlugUpdate --sync | source $MYVIMRC | sleep 2 | :q | :normal gg
 
+
 " Enables the Airline plugin
 let g:airline#extensions#tabline#enabled = 1
+
+
+" TABLINE FORMATTER
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
 " GENERAL
