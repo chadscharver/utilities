@@ -16,7 +16,6 @@ function! CheckVimPlug()
 		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 	endif
 endfunction
-call CheckVimPlug()
 
 
 " PLUGINS
@@ -34,7 +33,7 @@ call plug#end()
 
 
 " Automatically update plugins when opening vimrc
-autocmd VimEnter * PlugUpdate --sync | source $MYVIMRC | sleep 2 | :q | :normal gg
+autocmd BufRead,BufNewFile .vimrc PlugUpdate --sync | source $MYVIMRC | sleep 2 | :q | :normal gg
 
 
 " Enables the Airline plugin
