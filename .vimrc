@@ -136,7 +136,11 @@ function! ToggleSpell()
 		let g:showingSpell=0
 	endif
 endfunction
-	:map <silent> <Leader>o :call ToggleSpell()<CR>
+map <silent> <Leader>o :call ToggleSpell()<CR>
+
+
+" LINE WRAP TOGGLE
+map <silent> <Leader>l :set wrap!<CR>
 
 
 " NetrwTreeListing - File Browser Settings
