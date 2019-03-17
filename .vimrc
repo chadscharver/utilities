@@ -51,6 +51,7 @@ set noswapfile
 set nocompatible
 set encoding=utf-8
 set backspace=indent,eol,start
+set whichwrap+=<,>,h,l,[,]		" allows traversing the end of lines
 filetype plugin on
 syntax enable
 
@@ -140,6 +141,7 @@ map <silent> <Leader>o :call ToggleSpell()<CR>
 
 
 " LINE WRAP TOGGLE
+set linebreak
 map <silent> <Leader>l :set wrap!<CR>
 
 
