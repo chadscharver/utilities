@@ -29,6 +29,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'janko-m/vim-test'
 call plug#end()
 
 
@@ -165,5 +166,11 @@ cmap WQ wq
 cmap wQ wq
 cmap Q q
 cmap Tabe tabe
+
+
+" VIM TEST - plugin janko-m/vim-test
+map <silent> <Leader>t :TestNearest<Esc>
+map <silent> <Leader>f :TestFile<Esc>
+map <silent> <Leader>s :TestSuite<Esc>
 
 
