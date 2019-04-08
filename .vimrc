@@ -57,6 +57,15 @@ filetype plugin on
 syntax enable
 
 
+" FINDING FILES
+set path+=**
+set wildmenu
+
+
+" TAG JUMPING
+command! MakeTags !~/Software/ctags58/ctags.exe -R .
+
+
 " COLOR SCHEME
 set t_Co=256
 colorscheme codedark
@@ -142,7 +151,7 @@ map <silent> <Leader>o :call ToggleSpell()<CR>
 
 
 " LINE WRAP TOGGLE
-set linebreak
+"set linebreak
 map <silent> <Leader>l :set wrap!<CR>
 
 
@@ -169,7 +178,7 @@ cmap Tabe tabe
 
 
 " VIM TEST - plugin janko-m/vim-test
-map <silent> <Leader>t :TestNearest<Esc>
+map <silent> <Leader>n :TestNearest<Esc>
 map <silent> <Leader>f :TestFile<Esc>
 map <silent> <Leader>s :TestSuite<Esc>
 
